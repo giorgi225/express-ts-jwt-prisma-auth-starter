@@ -132,6 +132,7 @@ This feature allows the application to send an email verification link during us
    git checkout main
    git pull origin main
    git merge features/email-verification
+   npx prisma generate
    ```
 2. **Update environment variables**:
    # Email Settings
