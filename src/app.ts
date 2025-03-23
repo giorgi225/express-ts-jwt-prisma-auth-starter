@@ -4,8 +4,6 @@ import cors from "cors";
 import authRoutes from "@routes/auth.routes";
 import appConfig from "@config/app.config";
 import userRoutes from "@routes/user.routes";
-import ValidationMiddleware from "@middlewares/validation.middleware";
-import { generateMillisecondsFromDuration } from "@utils/generate.utils";
 
 class App {
     private app: Express;
@@ -20,7 +18,7 @@ class App {
     private initMiddlewares() {
         this.app.use(express.json());
         this.app.use(cookieParser());
-        this.app.use(ValidationMiddleware.validateCSRF);
+        // this.app.use(ValidationMiddleware.validateCSRF);
         this.app.use(cors({
             origin: [
                 'http://localhost:3000', // your frontend url

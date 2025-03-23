@@ -53,6 +53,24 @@ class AuthRouter extends BaseRouter {
                 path: "/get-csrf",  // Endpoint: api/auth/get-csrf
                 handler: AuthController.getCSRF
             },
+            {
+                // Route to verify email
+                method: "post",
+                path: "/verify-email",  // Endpoint: api/auth/verify-email
+                middlewares: [
+                    ValidationMiddleware.validateBody(authSchema.verifyEmail)
+                ],
+                handler: AuthController.verifyEmail
+            },
+            {
+                // Route to send email verification 6 digit code
+                method: "post",
+                path: "/send-email-verification",  // Endpoint: api/auth/send-email-verification
+                middlewares: [
+                    ValidationMiddleware.validateBody(authSchema.sendEmailVerification)
+                ],
+                handler: AuthController.sendEmailVerification
+            },
         ]
     }
 }

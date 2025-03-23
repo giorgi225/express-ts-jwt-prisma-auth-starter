@@ -3,14 +3,6 @@
  * 
  * The function parses the input string to extract a numeric value and a time unit (minutes, hours, or days).
  * Based on the extracted unit, it converts the value into the corresponding milliseconds.
- * 
- * @param {string} duration - The duration string in the format of a number followed by a time unit:
- *                             "m" for minutes, "h" for hours, or "d" for days.
- *                             Example inputs: "15m", "2h", "3d"
- * 
- * @returns {number} - The equivalent duration in milliseconds.
- * 
- * @throws {Error} - Throws an error if the format is invalid or the unit is unsupported.
  */
 export function generateMillisecondsFromDuration(duration: string): number {
     // Match numeric value followed by "m" for minutes, "h" for hours, or "d" for days
@@ -35,4 +27,20 @@ export function generateMillisecondsFromDuration(duration: string): number {
         default:
             throw new Error('Invalid duration unit. Supported units are "m" (minutes), "h" (hours), or "d" (days).');
     }
+}
+
+
+/**
+ * Generates a random 6-digit code.
+ * The code will always be a 6-digit number, even if it falls below 100,000.
+ * 
+ * This function generates a random number between 100,000 and 999,999, and ensures that the result is always 6 digits by padding with zeros if needed.
+ * 
+ * @returns {number} A random 6-digit number.
+ */
+export function generateNumericCode(): number {
+    // Generate a random number between 100000 and 999999
+    const code = Math.floor(100000 + Math.random() * 900000);
+    // Return the code as a number, but ensuring it's always 6 digits
+    return parseInt(code.toString().padStart(6, '0'));
 }
