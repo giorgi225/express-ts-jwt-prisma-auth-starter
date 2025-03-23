@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.1.0] - 2025-03-23
+### Added
+- **Email verification**:
+  - Users receive a verification email upon registration.
+  - Added `POST /api/auth/send-email-verification` to resend the verification email.
+  - Added `POST /api/auth/verify-email` to verify the email using a unique code stored in database.
+  - Middleware ensures only verified users can log in.
+  - Secure email verification token with expiration.
+
+
+---
 ## [1.0.0] - 2025-03-23
 ### Added
 - **JWT-based authentication**:
