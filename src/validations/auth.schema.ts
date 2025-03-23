@@ -33,10 +33,22 @@ const register = z.object({
     message: "Passwords do not match"
 });
 
+const verifyEmail = z.object({
+    email: z.string().email("Invalid email format"),
+    code: z.string()
+        .length(6, "Code must be exactly 6 digits")
+        .regex(/^\d{6}$/, "Code must be a 6-digit number"),
+})
+
+const sendEmailVerification = z.object({
+    email: z.string().email("Invalid email format"),
+})
 
 const authSchema = {
     login,
-    register
+    register,
+    verifyEmail,
+    sendEmailVerification
 }
 
 export default authSchema;

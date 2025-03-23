@@ -21,4 +21,16 @@ model User {
   refreshToken       String?
   createdAt          DateTime            @default(now())
   updatedAt          DateTime            @updatedAt
+  Email_verification Email_verification?
+}
+
+model Email_verification {
+  userId                  Int       @unique
+  User                    User      @relation(fields: [userId], references: [id])
+  code                    Int?
+  verified                Boolean   @default(false)
+  verified_at             DateTime?
+  verification_expiration DateTime?
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
 }
